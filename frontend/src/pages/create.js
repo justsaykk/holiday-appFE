@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
 import urlcat from "urlcat";
-// import "dotenv/config";
 
-const BACKEND = process.env.REACT_APP_BACKEND;
+const BACKEND = process.env.REACT_APP_BACKEND ?? "http://localhost:2000";
+
 const url = urlcat(BACKEND, "/api/holidays");
+const data = { name: "mybirthday", likes: 10 };
 
 function Create() {
   const handleCreate = () => {
@@ -25,4 +25,4 @@ function Create() {
   );
 }
 
-export default Seed;
+export default Create;
