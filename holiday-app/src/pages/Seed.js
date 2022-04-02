@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react";
+import urlcat from "urlcat";
 import "dotenv/config";
 
-const REACT_APP_BACKEND = process.env.BACKEND;
-
+const BACKEND = process.env.REACT_APP_BACKEND;
+console.log(BACKEND);
 function Seed() {
   const [seed, setSeed] = useState([]);
 
   useEffect(() => {
-    fetch(`${REACT_APP_BACKEND}/api/holidays/seed`)
+    fetch(urlcat(BACKEND, "/api/holidays/seed"))
       .then((res) => res.json())
       .then((data) => {
         setSeed(data);
+        console.log(data);
       });
   }, []);
 
