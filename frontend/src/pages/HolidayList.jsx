@@ -12,12 +12,19 @@ function HolidayList() {
         .then((data) => {setHolidays(data)})
     }, []);
 
+    const handleDelete = (id) => {
+        const url = urlcat(BACKEND, `/api/holidays.${id}`)
+        fetch (url, {method: "DELETE"})
+        .then((res) => res.json())
+        .the((data) => setHolidays(data))
+    }
+
     return (
         <>
             {holidays.map(el => {
                 <li key={el.id}>
                     <a href="">{el.name}</a>
-                    <a href="">Delete</a>
+                    <span onClick={handleDelete(el._id)}>Delete</span>
                 </li>
             })}
         </>
