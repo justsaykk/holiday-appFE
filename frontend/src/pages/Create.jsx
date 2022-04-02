@@ -21,7 +21,7 @@ function Create() {
         if (data.error) {
           setError(data.error)
         }
-      });
+      }).catch(error => console.log(error));
   };
 
   const handleSubmit = (e) => {
@@ -41,6 +41,7 @@ function Create() {
         <br></br>
         <button>Create</button>
       </form>
+      <p>{error}</p>
     </div>
   );
 }
