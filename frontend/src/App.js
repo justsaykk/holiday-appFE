@@ -1,9 +1,11 @@
 import Seed from "./pages/Seed";
+import Create from "./pages/Create";
 
 function App() {
   return (
     <div className="App">
-      <Seed />
+      <h1>Hello World</h1>
+      <Create />
     </div>
   );
 }
