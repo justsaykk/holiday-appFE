@@ -1,13 +1,23 @@
+import { useEffect, useState } from "react";
+import "dotenv/config";
+
+const BACKEND = process.env.BACKEND;
+
 function Seed() {
-  fetch("https://holidayapp-backend.herokuapp.com/api/holidays/seed")
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-    });
+  const [seed, setSeed] = useState([]);
+
+  useEffect(() => {
+    fetch(`${BACKEND}/api/holidays/seed`)
+      .then((res) => res.json())
+      .then((data) => {
+        setSeed(data);
+      });
+  }, []);
 
   return (
     <>
       <h1>seed</h1>
+      <pre>{JSON.stringify(seed, null, 2)}</pre>
     </>
   );
 }
